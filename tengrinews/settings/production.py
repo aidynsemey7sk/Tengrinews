@@ -129,7 +129,8 @@ LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Asia/Almaty'
 
-locale.setlocale(locale.LC_ALL, "ru_RU.utf8")
+# На Herory не работает эта локаль
+# locale.setlocale(locale.LC_ALL, "ru_RU.utf8")
 
 USE_I18N = False
 
