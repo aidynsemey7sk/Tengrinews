@@ -114,19 +114,19 @@ class PostImage(models.Model):
             img.save(self.image.path)
 
 
-class Comment(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    body = models.TextField(blank=False)
-    owner = models.ForeignKey(
-        'auth.User', related_name='comments', on_delete=models.CASCADE
-    )
-    post = models.ForeignKey(
-        'Post', related_name='comments', on_delete=models.CASCADE
-    )
-
-    class Meta:
-        ordering = ['created']
-
-    def __str__(self):
-        return f'Комментарии пользователя {self.owner} ' \
-               f'c id номер {self.owner.id} для поста {self.post.id}'
+# class Comment(models.Model):
+#     created = models.DateTimeField(auto_now_add=True)
+#     body = models.TextField(blank=False)
+#     owner = models.ForeignKey(
+#         'auth.User', related_name='comments', on_delete=models.CASCADE
+#     )
+#     post = models.ForeignKey(
+#         'Post', related_name='comments', on_delete=models.CASCADE
+#     )
+#
+#     class Meta:
+#         ordering = ['created']
+#
+#     def __str__(self):
+#         return f'Комментарии пользователя {self.owner} ' \
+#                f'c id номер {self.owner.id} для поста {self.post.id}'
