@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'news',
 
     "corsheaders",
-    'hitcount',
     'rest_framework',
 ]
 
