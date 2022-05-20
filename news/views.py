@@ -4,7 +4,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Post, Category
+from .models import Post, Category, Comment
 from .serializers import PostSerializer, CategorySerializer
 from datetime import datetime, timedelta
 
@@ -50,28 +50,28 @@ class TopViewPost(APIView):
 
 
 # Детали поста, подсчитывает количество просмотров
-# class PostDetail(APIView):
-#     def get_object(self, category_slug, post_slug):
-#         try:
-#             post = Post.objects.filter(
-#                 category__slug=category_slug).get(slug=post_slug)
-#             post.view_count = post.view_count + 1
-#             post.save()
-#             return Post.objects.filter(
-#                 category__slug=category_slug).get(slug=post_slug)
-#         except Post.DoesNotExist:
-#             raise Http404
-#
-#     def get(self, request, category_slug, post_slug, format=None):
-#         post = self.get_object(category_slug, post_slug)
-#         serializer = PostSerializer(post)
-#         return Response(serializer.data)
-#
-#     def retrieve(self, request, *args, **kwargs):
-#         obj = self.get_object()
-#         obj.view_count = obj.view_count + 1
-#         obj.save(update_fields=("view_count",))
-#         return super().retrieve(request, *args, **kwargs)
+class PostDetail(APIView):
+    def get_object(self, category_slug, post_slug):
+        try:
+            post = Post.objects.filter(
+                category__slug=category_slug).get(slug=post_slug)
+            post.view_count = post.view_count + 1
+            post.save()
+            return Post.objects.filter(
+                category__slug=category_slug).get(slug=post_slug)
+        except Post.DoesNotExist:
+            raise Http404
+
+    def get(self, request, category_slug, post_slug, format=None):
+        post = self.get_object(category_slug, post_slug)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+
+    def retrieve(self, request, *args, **kwargs):
+        obj = self.get_object()
+        obj.view_count = obj.view_count + 1
+        obj.save(update_fields=("view_count",))
+        return super().retrieve(request, *args, **kwargs)
 
 
 class CategoryDetail(APIView):
@@ -87,10 +87,10 @@ class CategoryDetail(APIView):
         return Response(serializer.data)
 
 
-# class CommentsList(APIView):
-#     def get(self, request, format=None):
-#         post = Comment.objects.all()
-#         serializer = CommentSerializer(post, many=True)
-#         return Response(serializer.data)
+class CommentsList(APIView):
+    def get(self, request, format=None):
+        post = Comment.objects.all()
+        serializer = CommentSerializer(post, many=True)
+        return Response(serializer.data)
 
 
