@@ -1,0 +1,1 @@
+web: gunicorn tengrinews.wsgi --log-file -
