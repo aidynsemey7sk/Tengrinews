@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Post, PostImage, Comment
+from .models import Category, Post, PostImage
 from django.contrib.auth.models import User
 
 
