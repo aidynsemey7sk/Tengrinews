@@ -130,3 +130,4 @@ class Comment(models.Model):
     def __str__(self):
         return f'Комментарии пользователя {self.owner} ' \
                f'c id номер {self.owner.id} для поста {self.post.id}'
+
