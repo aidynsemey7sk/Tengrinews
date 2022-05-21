@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import locale
 import os
 
 DB_NAME = os.environ.get('DB_NAME')
@@ -143,8 +142,8 @@ USE_TZ = False
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -158,5 +157,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%d.%b.%Y %H:%M",
 }
+
 
 # STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
