@@ -145,7 +145,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'news')
 # Add static folder to STATIC_DIRS
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'news'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 
