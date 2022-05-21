@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
     'news',
 
-    'storages',
+    # 'storages',
     "corsheaders",
     'rest_framework',
 ]
