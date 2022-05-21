@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
