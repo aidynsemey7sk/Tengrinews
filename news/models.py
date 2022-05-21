@@ -102,7 +102,7 @@ class PostImage(models.Model):
     post = models.ForeignKey(
         Post, related_name='image_for_post', on_delete=models.CASCADE
     )
-    image = models.ImageField(upload_to='news/', blank=True, null=True)
+    image = models.ImageField(upload_to='media/news/', blank=True, null=True)
 
     def save(self):
         super().save()
