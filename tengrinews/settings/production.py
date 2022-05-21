@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-(la(g^5)g58wqtyj8e=6nf^+z3pdgq9qaqg+gw0gb$n@4sj$-f
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 # Application definition
 
@@ -143,11 +143,11 @@ USE_TZ = False
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'uploads'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'uploads'),
+# )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
