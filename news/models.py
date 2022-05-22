@@ -33,72 +33,6 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
 
-# class Post(models.Model):
-#     category = models.ForeignKey(
-#         Category, related_name='posts', on_delete=models.CASCADE
-#     )
-#     tag = models.ManyToManyField(Tag)
-#     title = models.CharField(max_length=240)
-#     text = models.TextField()
-#     image = models.ImageField(upload_to='news/', blank=True, null=True)
-#     # image = models.ImageField(storage=s3_storage, upload_to='dir/', blank=True, null=True)
-#     thumbnail = models.ImageField(upload_to='thumbnail/', blank=True, null=True)
-#     date_added = models.DateTimeField(auto_now_add=True)
-#     slug = models.SlugField()
-#     view_count = models.IntegerField(default=0)
-#
-#     class Meta:
-#         ordering = ('-date_added',)
-#
-#     def __str__(self):
-#        return self.title
-#
-#     def get_absolute_url(self):
-#         return f'/{self.category.slug}/{self.slug}/'
-#
-#     def get_image(self):
-#         if self.image:
-#             return 'http://127.0.0.1:8000' + self.image.url
-#         return ''
-#
-#     def get_thumbnail(self):
-#         if self.thumbnail:
-#             return 'http://127.0.0.1:8000' + self.thumbnail.url
-#         else:
-#             if self.image:
-#                 self.thumbnail = self.make_thumbnail(self.image)
-#                 self.save()
-#                 return 'http://127.0.0.1:8000' + self.thumbnail.url
-#             else:
-#                 return ''
-#
-#     def make_thumbnail(self, image, size=(285, 160)):
-#         img = Image.open(image)
-#         img.convert('RGB')
-#         img.thumbnail(size)
-#         thumb_io = BytesIO()
-#         img.save(thumb_io, 'JPEG', quality=85)
-#         thumbnail = File(thumb_io, name=image.name)
-#
-#         return thumbnail
-#
-#     def get_date(self):
-#
-#         if datetime.now() - timedelta(hours=24) < \
-#                 self.date_added < datetime.now():
-#             return f"Сегодня, {self.date_added.strftime('%H:%M')}"
-#         elif datetime.now() > self.date_added > \
-#                 datetime.now() - timedelta(hours=24):
-#             return f"Вчера, {self.date_added.strftime('%H:%M')}"
-#         else:
-#             return self.date_added.strftime('%d.%b.%Y %H:%M')
-#
-#     def save(self, *args, **kwargs):
-#         value = unidecode(self.title)
-#         self.slug = slugify(value)
-#         super().save(*args, **kwargs)
-
-
 class Post(models.Model):
     category = models.ForeignKey(
         Category, related_name='posts', on_delete=models.CASCADE
@@ -198,5 +132,3 @@ class PostImage(models.Model):
 #     def __str__(self):
 #         return f'Комментарии пользователя {self.owner} ' \
 #                f'c id номер {self.owner.id} для поста {self.post.id}'
-
-
