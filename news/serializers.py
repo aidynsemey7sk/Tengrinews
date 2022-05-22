@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Post, PostImage, Comment
+from .models import Category, Post, PostImage
 from django.contrib.auth.models import User
 
 
@@ -28,7 +28,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     image_for_post = PostImageSerializer(many=True)
-    comments = CommentSerializer(many=True)
+    # comments = CommentSerializer(many=True)
 
     class Meta:
         model = Post
@@ -45,7 +45,7 @@ class PostSerializer(serializers.ModelSerializer):
             'view_count',
             'get_date',
 
-            'comments',
+            # 'comments',
         )
 
 

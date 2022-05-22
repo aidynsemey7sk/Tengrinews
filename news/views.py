@@ -4,7 +4,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Post, Category, Comment
+from .models import Post, Category
 from .serializers import PostSerializer, CategorySerializer, CommentSerializer
 from datetime import datetime, timedelta
 
@@ -87,10 +87,10 @@ class CategoryDetail(APIView):
         return Response(serializer.data)
 
 
-class CommentsList(APIView):
-    def get(self, request, format=None):
-        post = Comment.objects.all()
-        serializer = CommentSerializer(post, many=True)
-        return Response(serializer.data)
+# class CommentsList(APIView):
+#     def get(self, request, format=None):
+#         post = Comment.objects.all()
+#         serializer = CommentSerializer(post, many=True)
+#         return Response(serializer.data)
 
 
