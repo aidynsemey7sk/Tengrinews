@@ -18,12 +18,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['username', ]
 
 
-class CommentSerializer(serializers.ModelSerializer):
-    owner = UserSerializer()
-
-    class Meta:
-        model = Comment
-        fields = ['id', 'body', 'owner',  'post']
+# class CommentSerializer(serializers.ModelSerializer):
+#     owner = UserSerializer()
+#
+#     class Meta:
+#         model = Comment
+#         fields = ['id', 'body', 'owner',  'post']
 
 
 class PostSerializer(serializers.ModelSerializer):
