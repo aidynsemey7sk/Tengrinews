@@ -5,7 +5,6 @@ from django.core.files import File
 from django.db import models
 from unidecode import unidecode
 from datetime import datetime, timedelta
-from django.core.files.storage import default_storage as s3_storage
 
 
 class Tag(models.Model):
