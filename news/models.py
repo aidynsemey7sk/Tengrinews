@@ -105,12 +105,12 @@ class Post(models.Model):
         Category, related_name='posts', on_delete=models.CASCADE
     )
     tag = models.ManyToManyField(Tag)
-    title = models.CharField(max_length=240)
+    title = models.CharField(max_length=250)
     text = models.TextField()
     image = models.ImageField(upload_to='news/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='thumbnail/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=250)
     view_count = models.IntegerField(default=0)
 
     class Meta:
