@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Post, Category
-from .serializers import PostSerializer, CategorySerializer, CommentSerializer
+from .serializers import PostSerializer, CategorySerializer
 from datetime import datetime, timedelta
 
 last_hours = datetime.now() - timedelta(hours=24)
