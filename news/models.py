@@ -57,7 +57,6 @@ class Post(models.Model):
 
     def get_image(self):
         if self.image:
-            print('get_image', self.image.url)
             return self.image.url
         return ''
 
@@ -68,7 +67,6 @@ class Post(models.Model):
             if self.image:
                 self.thumbnail = self.make_thumbnail(self.image)
                 self.save()
-                print('rrr' ,self.thumbnail.url)
                 return self.thumbnail.url
             else:
                 return ''
